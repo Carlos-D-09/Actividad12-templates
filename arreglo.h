@@ -23,6 +23,7 @@ class ArregloDinamico{
         void eliminar_inicio ();
         void eliminar_final();
         void eliminar(size_t position);
+        void mostrar();
         T operator[] (size_t p){
             return arreglo[p];
         }
@@ -127,5 +128,12 @@ void ArregloDinamico<T>::expandir(){
     }
     delete[] arreglo;
     arreglo = nuevo;
+}
+template <class T>
+void ArregloDinamico<T>::mostrar(){
+
+    for(size_t i(0); i<cont;i++){
+        cout<<endl<<arreglo[i];
+    }
 }
 #endif

@@ -2,34 +2,26 @@
 
 int main (){
 
-    ArregloDinamico <int> arreglo;
+    ArregloDinamico <string> arreglo;
 
-    for (int i = 0; i < 10; i++){
-        arreglo.insertar_final(i);
-    }
-    for (size_t i = 0; i < arreglo.size(); i++){
-        cout<<arreglo[i]<<" ";
-    }
-    arreglo.insertar(25,1);
-    cout<<endl << endl;
-    for (size_t i = 0; i < arreglo.size(); i++){
-        cout<<arreglo[i]<<" ";
-    }
+    arreglo.insertar_final("cadena 1");
+    arreglo.insertar_final("cadena 2");
+    arreglo.insertar_inicio("cadena 3");
+    arreglo.insertar_inicio("cadena 4");
+    cout<<endl<<"Elementos insertados hasta el momento:";
+    arreglo.mostrar();
+
+    arreglo.insertar("cadena 5", 2);
+    cout<<endl<<"Insertamos el string: cadena 5, en la posición 2. Elementos hasta el momento:";
+    arreglo.mostrar();
+
     arreglo.eliminar_inicio();
-    cout<<endl <<endl;
-    for (size_t i = 0; i < arreglo.size(); i++){
-        cout<<arreglo[i]<<" ";
-    }
     arreglo.eliminar_final();
-    cout<<endl <<endl;
-    for (size_t i = 0; i < arreglo.size(); i++){
-        cout<<arreglo[i]<<" ";
-    }
-    arreglo.eliminar(0);
-    cout<<endl <<endl;
-    for (size_t i = 0; i < arreglo.size(); i++){
-        cout<<arreglo[i]<<" ";
-    }
+    arreglo.eliminar(1);
+    cout<<endl<<"Los elementos que ya no estan fueron eliminados de la siguiente forma: el primer elemento del arreglo,"<<endl
+        <<"luego el ultimo y al final el elemento que se situaba en la posicion 1. Elementos que restan: ";
+    arreglo.mostrar();
+
     cout <<endl <<endl;
     return 0;
 }
