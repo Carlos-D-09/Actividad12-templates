@@ -23,6 +23,11 @@ class ArregloDinamico{
         void eliminar_inicio ();
         void eliminar_final();
         void eliminar(size_t position);
+        T* buscar(const T &obj);
+        friend ArregloDinamico<T>& operator<< (ArregloDinamico<T> &a, const T &obj){
+            a.insertar_final(obj);
+            return a;
+        }
         T operator[] (size_t p){
             return arreglo[p];
         }
@@ -55,6 +60,7 @@ void ArregloDinamico<T>::insertar_inicio(const T &value){
     arreglo[0] = value;
     cont++;
 }
+
 template <class T>
 void ArregloDinamico<T>::insertar_final(const T &value){
     
@@ -64,6 +70,7 @@ void ArregloDinamico<T>::insertar_final(const T &value){
     arreglo[cont] = value;
     cont++;
 }
+
 template <class T>
 void ArregloDinamico <T>::insertar(const T &value, size_t position){
     if(position>=cont){
@@ -81,6 +88,7 @@ void ArregloDinamico <T>::insertar(const T &value, size_t position){
         cont++;
     }
 }
+
 template<class T>
 void ArregloDinamico<T>::eliminar_inicio (){
     if(cont == 0){
@@ -92,6 +100,7 @@ void ArregloDinamico<T>::eliminar_inicio (){
     }
     cont--;
 }
+
 template<class T>
 void ArregloDinamico<T>::eliminar_final (){
     if(cont == 0){
@@ -99,6 +108,7 @@ void ArregloDinamico<T>::eliminar_final (){
     }
     cont--;
 }
+
 template<class T>
 void ArregloDinamico<T>::eliminar(size_t position){
     if(position>=cont){
@@ -113,10 +123,23 @@ void ArregloDinamico<T>::eliminar(size_t position){
     }
     cont--;
 }
+
+template <class T>
+T* ArregloDinamico<T>::buscar (const T &obj){
+    for (size_t i = 0; i < cont; i++)
+    {
+        if(arreglo[i]==obj){
+            return &arreglo[i];
+        }
+    }
+    return nullptr;
+}
+
 template <class T>
 size_t ArregloDinamico<T>::size(){
     return cont;
 }
+
 template <class T>
 void ArregloDinamico<T>::expandir(){
 

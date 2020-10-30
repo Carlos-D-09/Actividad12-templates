@@ -1,35 +1,29 @@
 # include "arreglo.h"
+#include "computadora.h"
 
 int main (){
+    ArregloDinamico<Computadora> Computadoras;
 
-    ArregloDinamico <int> arreglo;
+    Computadora comp01("Ubuntu", "DELL", "Modelo 1", "Intel core i3", 4);
+    Computadora comp02("Ubuntu", "DELL", "Modelo 2", "Intel core i3", 4);
+    Computadora comp03("Ubuntu", "DELL", "Modelo 3", "Intel core i3", 4);
 
-    for (int i = 0; i < 10; i++){
-        arreglo.insertar_final(i);
+    Computadoras <<comp01 <<comp02 <<comp03;
+
+    Computadora comp04("Ubuntu", "DELL", "Modelo 2", "Intel core i3", 4);
+
+    Computadora *ptr;
+    ptr=Computadoras.buscar(comp04);
+
+    if(ptr!=nullptr){
+        cout <<endl <<"Información encontrada";
+        cout <<*ptr <<endl;
     }
-    for (size_t i = 0; i < arreglo.size(); i++){
-        cout<<arreglo[i]<<" ";
+    else{
+        cout<<endl <<"No se ha encotnrado nada";
     }
-    arreglo.insertar(25,1);
-    cout<<endl << endl;
-    for (size_t i = 0; i < arreglo.size(); i++){
-        cout<<arreglo[i]<<" ";
-    }
-    arreglo.eliminar_inicio();
-    cout<<endl <<endl;
-    for (size_t i = 0; i < arreglo.size(); i++){
-        cout<<arreglo[i]<<" ";
-    }
-    arreglo.eliminar_final();
-    cout<<endl <<endl;
-    for (size_t i = 0; i < arreglo.size(); i++){
-        cout<<arreglo[i]<<" ";
-    }
-    arreglo.eliminar(0);
-    cout<<endl <<endl;
-    for (size_t i = 0; i < arreglo.size(); i++){
-        cout<<arreglo[i]<<" ";
-    }
+
+
     cout <<endl <<endl;
     return 0;
 }
