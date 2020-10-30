@@ -24,6 +24,8 @@ class ArregloDinamico{
         void eliminar_final();
         void eliminar(size_t position);
         T* buscar(const T &obj);
+        ArregloDinamico<T*> buscar_todos(const T &obj);
+
         friend ArregloDinamico<T>& operator<< (ArregloDinamico<T> &a, const T &obj){
             a.insertar_final(obj);
             return a;
@@ -133,6 +135,18 @@ T* ArregloDinamico<T>::buscar (const T &obj){
         }
     }
     return nullptr;
+}
+
+template <class T>
+ArregloDinamico<T*> ArregloDinamico<T>::buscar_todos(const T &obj){
+    ArregloDinamico<T*> ptrs;
+    for (size_t i = 0; i < cont; i++)
+    {
+        if(arreglo[i]==obj){
+            ptrs.insertar_final(&arreglo[i]);
+        }
+    }
+    return ptrs;
 }
 
 template <class T>
