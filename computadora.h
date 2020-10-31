@@ -37,8 +37,8 @@ class Computadora
 
         friend ostream& operator << (ostream& os, const Computadora &obj){
             os<<left;
-            os<<endl<<setw(25)<<obj.getSystem()<<setw(24)<<obj.getModel()<<setw(24)<<obj.getCompany()<<setw(21)
-              <<obj.getCpu()<<setw(20)<<obj.getRam();
+            os <<endl <<setw(25) <<obj.getSystem() <<setw(24) <<obj.getCompany() <<setw(21)<<obj.getModel()
+            <<setw(24) <<obj.getCpu() <<setw(20) <<obj.getRam();
 
             return os;
         }
@@ -59,7 +59,7 @@ class Computadora
         }
 
         bool operator== (const Computadora &obj){
-                return Model==obj.getModel();
+                return SystemOperative==obj.getSystem();
         }
 };
 
